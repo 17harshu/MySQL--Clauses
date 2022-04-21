@@ -1,0 +1,58 @@
+use employee;
+
+create table cars(
+id int not null primary key,
+name varchar(20) not null,
+colour varchar(20) not null,
+price int not null);
+
+insert into cars values(1, "Swift", "white", 20000),
+(2, "Qualis", "grey", 30000),
+(3, "Fabia", "grey", 40000),
+(4, "Creta", "black", 40000),
+(5, "Scorpio", "blue", 60000);
+
+select * from cars;
+
+select * from cars where colour="black";
+
+select * from cars where colour="grey" and id < 5;
+
+select * from cars where colour="black" or id = 5;
+
+select * from cars 
+where (name="creta" and colour="black")
+or (id=5);
+
+select distinct colour
+from cars;
+
+select * from cars
+order by name;
+
+select * from cars
+order by name desc;
+
+select name, colour
+from cars
+where id<5
+order by name desc, colour asc;
+
+select colour, count(*)
+from cars
+group by colour;
+
+select *, sum(price)
+from cars
+group by colour;
+
+select name, min(price)
+from cars;
+
+select name, max(price)
+from cars;
+
+select name, sum(price)
+from cars
+group by colour
+having sum(price)>20000;
